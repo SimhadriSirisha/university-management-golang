@@ -36,7 +36,7 @@ func main() {
 			nil,
 	}
 
-	//insertSeedData(connectionmanager)
+	insertSeedData(connectionmanager)
 
 	grpcServer := grpc.NewServer()
 	lis, err := net.Listen("tcp", ":"+port)
@@ -59,19 +59,33 @@ func insertSeedData(connectionManager connection.DatabaseConnectionManager) {
 		log.Fatalf("Error: %+v", err)
 	}
 
-	log.Println("Cleaning up department table")
-	_, err = connection.GetSession().DeleteFrom("department").Exec()
+	log.Println("Cleaning up students table")
+	_, err = connection.GetSession().DeleteFrom("students").Exec()
+	log.Println("Cleaning up departments table")
+	_, err = connection.GetSession().DeleteFrom("departments").Exec()
 	if err != nil {
 		log.Fatalf("Could not delete from department table. Err: %+v", err)
 	}
 
-	log.Println("Inserting into department table")
-	_, err = connection.GetSession().InsertInto("department").Columns("name").
-		Values("Computer Science").Exec()
+	log.Println("Inserting into departments table")
+	_, err = connection.GetSession().InsertInto("departments").Columns("id","name").
+		Values(101, "Computer Science").Exec()
+	_, err = connection.GetSession().InsertInto("departments").Columns("id","name").
+		Values(102, "Information Technology").Exec()
+
+	log.Println("Inserting into students table")
+	_,err = connection.GetSession().InsertInto("students").Columns("rollno", "name", "dept_no").
+		Values(1, "Justin", 101).Exec()
+	_,err = connection.GetSession().InsertInto("students").Columns("rollno", "name", "dept_no").
+		Values(2, "Crystal", 101).Exec()
+	_,err = connection.GetSession().InsertInto("students").Columns("rollno", "name", "dept_no").
+		Values(3, "James", 102).Exec()
+	_,err = connection.GetSession().InsertInto("students").Columns("rollno", "name", "dept_no").
+		Values(4, "Sandy", 102).Exec()
 
 	if err != nil {
 		log.Fatalf("Could not insert into department table. Err: %+v", err)
 	}
 
-	defer connectionManager.CloseConnection()
+	//defer connectionManager.CloseConnection()
 }
