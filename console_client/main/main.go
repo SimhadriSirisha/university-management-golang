@@ -32,4 +32,12 @@ func main() {
 		log.Fatalf("Error occured while fetching students of department id %d,err: %+v", departmentID, err)
 	}
 	log.Println(studentsResponse)
+
+	var studentId int32 = 1
+	staffRequest := &university_management.GetStaffsTeachingToStudentRequest{StudentId: studentId}
+	staffResponse,err := client.GetStaffsTeachingToStudent(context.Background(), staffRequest)
+	if err != nil {
+		log.Fatalf("Error occured while fetching the staffs teaching the student having rollno %d, err: %v", studentId, err)
+	}
+	log.Println(staffResponse)
 }

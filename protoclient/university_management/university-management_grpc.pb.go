@@ -20,6 +20,7 @@ const _ = grpc.SupportPackageIsVersion7
 type UniversityManagementServiceClient interface {
 	GetDepartment(ctx context.Context, in *GetDepartmentRequest, opts ...grpc.CallOption) (*GetDepartmentResponse, error)
 	GetStudentsForDepartment(ctx context.Context, in *GetStudentsForDepartmentRequest, opts ...grpc.CallOption) (*GetStudentsForDepartmentResponse, error)
+	GetStaffsTeachingToStudent(ctx context.Context, in *GetStaffsTeachingToStudentRequest, opts ...grpc.CallOption) (*GetStaffsTeachingToStudentResponse, error)
 }
 
 type universityManagementServiceClient struct {
@@ -48,12 +49,22 @@ func (c *universityManagementServiceClient) GetStudentsForDepartment(ctx context
 	return out, nil
 }
 
+func (c *universityManagementServiceClient) GetStaffsTeachingToStudent(ctx context.Context, in *GetStaffsTeachingToStudentRequest, opts ...grpc.CallOption) (*GetStaffsTeachingToStudentResponse, error) {
+	out := new(GetStaffsTeachingToStudentResponse)
+	err := c.cc.Invoke(ctx, "/university_management.UniversityManagementService/GetStaffsTeachingToStudent", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UniversityManagementServiceServer is the server API for UniversityManagementService service.
 // All implementations must embed UnimplementedUniversityManagementServiceServer
 // for forward compatibility
 type UniversityManagementServiceServer interface {
 	GetDepartment(context.Context, *GetDepartmentRequest) (*GetDepartmentResponse, error)
 	GetStudentsForDepartment(context.Context, *GetStudentsForDepartmentRequest) (*GetStudentsForDepartmentResponse, error)
+	GetStaffsTeachingToStudent(context.Context, *GetStaffsTeachingToStudentRequest) (*GetStaffsTeachingToStudentResponse, error)
 	mustEmbedUnimplementedUniversityManagementServiceServer()
 }
 
@@ -66,6 +77,9 @@ func (UnimplementedUniversityManagementServiceServer) GetDepartment(context.Cont
 }
 func (UnimplementedUniversityManagementServiceServer) GetStudentsForDepartment(context.Context, *GetStudentsForDepartmentRequest) (*GetStudentsForDepartmentResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStudentsForDepartment not implemented")
+}
+func (UnimplementedUniversityManagementServiceServer) GetStaffsTeachingToStudent(context.Context, *GetStaffsTeachingToStudentRequest) (*GetStaffsTeachingToStudentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStaffsTeachingToStudent not implemented")
 }
 func (UnimplementedUniversityManagementServiceServer) mustEmbedUnimplementedUniversityManagementServiceServer() {
 }
@@ -117,6 +131,24 @@ func _UniversityManagementService_GetStudentsForDepartment_Handler(srv interface
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UniversityManagementService_GetStaffsTeachingToStudent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetStaffsTeachingToStudentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UniversityManagementServiceServer).GetStaffsTeachingToStudent(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/university_management.UniversityManagementService/GetStaffsTeachingToStudent",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UniversityManagementServiceServer).GetStaffsTeachingToStudent(ctx, req.(*GetStaffsTeachingToStudentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UniversityManagementService_ServiceDesc is the grpc.ServiceDesc for UniversityManagementService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -131,6 +163,10 @@ var UniversityManagementService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetStudentsForDepartment",
 			Handler:    _UniversityManagementService_GetStudentsForDepartment_Handler,
+		},
+		{
+			MethodName: "GetStaffsTeachingToStudent",
+			Handler:    _UniversityManagementService_GetStaffsTeachingToStudent_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
