@@ -7,3 +7,5 @@ fileignoreconfig:
   checksum: d0ea4ad54e328e499e535c00ba7f121b8dcd94241140172cb4c18ca8a5fe883d
 - filename: go.sum
   checksum: b302d410ae22ee1c266ea49c370eaec229c9cb7ab80a9d5796555c7f2a7d78a2
+- filename: db/migrations/000001_create_department_table.up.sql
+  checksum: 6f2102dd24eee932136a4ad7dd42fa7db047a23d52157e5a8af777598e67690f
