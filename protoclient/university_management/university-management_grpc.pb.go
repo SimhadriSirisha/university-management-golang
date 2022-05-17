@@ -21,6 +21,8 @@ type UniversityManagementServiceClient interface {
 	GetDepartment(ctx context.Context, in *GetDepartmentRequest, opts ...grpc.CallOption) (*GetDepartmentResponse, error)
 	GetStudentsForDepartment(ctx context.Context, in *GetStudentsForDepartmentRequest, opts ...grpc.CallOption) (*GetStudentsForDepartmentResponse, error)
 	GetStaffsTeachingToStudent(ctx context.Context, in *GetStaffsTeachingToStudentRequest, opts ...grpc.CallOption) (*GetStaffsTeachingToStudentResponse, error)
+	InsertLoginTime(ctx context.Context, in *InsertLoginTimeRequest, opts ...grpc.CallOption) (*InsertLoginTimeResponse, error)
+	InsertLogoutTime(ctx context.Context, in *InsertLogoutTimeRequest, opts ...grpc.CallOption) (*InsertLogoutTimeResponse, error)
 }
 
 type universityManagementServiceClient struct {
@@ -58,6 +60,24 @@ func (c *universityManagementServiceClient) GetStaffsTeachingToStudent(ctx conte
 	return out, nil
 }
 
+func (c *universityManagementServiceClient) InsertLoginTime(ctx context.Context, in *InsertLoginTimeRequest, opts ...grpc.CallOption) (*InsertLoginTimeResponse, error) {
+	out := new(InsertLoginTimeResponse)
+	err := c.cc.Invoke(ctx, "/university_management.UniversityManagementService/InsertLoginTime", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *universityManagementServiceClient) InsertLogoutTime(ctx context.Context, in *InsertLogoutTimeRequest, opts ...grpc.CallOption) (*InsertLogoutTimeResponse, error) {
+	out := new(InsertLogoutTimeResponse)
+	err := c.cc.Invoke(ctx, "/university_management.UniversityManagementService/InsertLogoutTime", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UniversityManagementServiceServer is the server API for UniversityManagementService service.
 // All implementations must embed UnimplementedUniversityManagementServiceServer
 // for forward compatibility
@@ -65,6 +85,8 @@ type UniversityManagementServiceServer interface {
 	GetDepartment(context.Context, *GetDepartmentRequest) (*GetDepartmentResponse, error)
 	GetStudentsForDepartment(context.Context, *GetStudentsForDepartmentRequest) (*GetStudentsForDepartmentResponse, error)
 	GetStaffsTeachingToStudent(context.Context, *GetStaffsTeachingToStudentRequest) (*GetStaffsTeachingToStudentResponse, error)
+	InsertLoginTime(context.Context, *InsertLoginTimeRequest) (*InsertLoginTimeResponse, error)
+	InsertLogoutTime(context.Context, *InsertLogoutTimeRequest) (*InsertLogoutTimeResponse, error)
 	mustEmbedUnimplementedUniversityManagementServiceServer()
 }
 
@@ -80,6 +102,12 @@ func (UnimplementedUniversityManagementServiceServer) GetStudentsForDepartment(c
 }
 func (UnimplementedUniversityManagementServiceServer) GetStaffsTeachingToStudent(context.Context, *GetStaffsTeachingToStudentRequest) (*GetStaffsTeachingToStudentResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStaffsTeachingToStudent not implemented")
+}
+func (UnimplementedUniversityManagementServiceServer) InsertLoginTime(context.Context, *InsertLoginTimeRequest) (*InsertLoginTimeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method InsertLoginTime not implemented")
+}
+func (UnimplementedUniversityManagementServiceServer) InsertLogoutTime(context.Context, *InsertLogoutTimeRequest) (*InsertLogoutTimeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method InsertLogoutTime not implemented")
 }
 func (UnimplementedUniversityManagementServiceServer) mustEmbedUnimplementedUniversityManagementServiceServer() {
 }
@@ -149,6 +177,42 @@ func _UniversityManagementService_GetStaffsTeachingToStudent_Handler(srv interfa
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UniversityManagementService_InsertLoginTime_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(InsertLoginTimeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UniversityManagementServiceServer).InsertLoginTime(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/university_management.UniversityManagementService/InsertLoginTime",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UniversityManagementServiceServer).InsertLoginTime(ctx, req.(*InsertLoginTimeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UniversityManagementService_InsertLogoutTime_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(InsertLogoutTimeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UniversityManagementServiceServer).InsertLogoutTime(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/university_management.UniversityManagementService/InsertLogoutTime",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UniversityManagementServiceServer).InsertLogoutTime(ctx, req.(*InsertLogoutTimeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UniversityManagementService_ServiceDesc is the grpc.ServiceDesc for UniversityManagementService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -167,6 +231,14 @@ var UniversityManagementService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetStaffsTeachingToStudent",
 			Handler:    _UniversityManagementService_GetStaffsTeachingToStudent_Handler,
+		},
+		{
+			MethodName: "InsertLoginTime",
+			Handler:    _UniversityManagementService_InsertLoginTime_Handler,
+		},
+		{
+			MethodName: "InsertLogoutTime",
+			Handler:    _UniversityManagementService_InsertLogoutTime_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

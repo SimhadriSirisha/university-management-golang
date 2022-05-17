@@ -9,3 +9,9 @@ docker:
 
 open_db:
 	 psql  -p 5436 -U postgres -h localhost
+
+server:
+	go run server/main/main.go
+
+client:
+	go run client/main/main.go

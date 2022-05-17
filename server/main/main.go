@@ -67,6 +67,8 @@ func insertSeedData(connectionManager connection.DatabaseConnectionManager) {
 	_, err = connection.GetSession().DeleteFrom("departments").Exec()
 	log.Println("Cleaning up staffs table")
 	_, err = connection.GetSession().DeleteFrom("staffs").Exec()
+	log.Println("Cleaning up student_attendance table")
+	_, err = connection.GetSession().DeleteFrom("student_attendance").Exec()
 	if err != nil {
 		log.Fatalf("Could not delete table. Err: %+v", err)
 	}

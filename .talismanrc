@@ -9,3 +9,15 @@ fileignoreconfig:
   checksum: b302d410ae22ee1c266ea49c370eaec229c9cb7ab80a9d5796555c7f2a7d78a2
 - filename: db/migrations/000001_create_department_table.up.sql
   checksum: 6f2102dd24eee932136a4ad7dd42fa7db047a23d52157e5a8af777598e67690f
+- filename: db/migrations/000003_create_staff_table.down.sql
+  checksum: 965d57c8568845e0dfd430e6b248ee2e234f17dd5a24db32dbcb2e10cc2c7712
+- filename: db/migrations/000003_create_staff_table.up.sql
+  checksum: a4adde174af028a3ff4ab720bfaf632c7cacd6b330af66976a35d6d2cc18262b
+- filename: db/migrations/000004_create_staff_department_relation_table.down.sql
+  checksum: 230072e5a8bf3b1662d05f75050226cefd14d18c094d3870ad2ac3c6223cd41b
+- filename: db/migrations/000004_create_staff_department_relation_table.up.sql
+  checksum: 8709b27d71580254bf1b6982caab69a548d5c871a93b1ae738b3e6b37edee8da
+- filename: db/migrations/000005_create_student_attendence_table.down.sql
+  checksum: b54480adfc08fafd67c49011a2646113bacddd7132c894afcf3f33b1c1c513d5
+- filename: db/migrations/000005_create_student_attendence_table.up.sql
+  checksum: 8345afcf547cb6554ca11a2b10216b1949dfc0abaa6b961d8dba4be0963015ea

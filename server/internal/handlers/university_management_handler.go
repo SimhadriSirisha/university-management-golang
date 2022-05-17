@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"log"
+	"time"
 	"university-management-golang/db/connection"
 	um "university-management-golang/protoclient/university_management"
 )
@@ -50,13 +51,10 @@ func (u *universityManagementServer) GetStudentsForDepartment(ctx context.Contex
 	}
 
 	_, err = json.Marshal(&students)
-	if err != nil {
-		log.Fatalf("Error while marshaling %+v", err)
-	}
 
 	return &um.GetStudentsForDepartmentResponse{
 		Students: students,
-	},nil
+	},err
 }
 
 func (u *universityManagementServer)  GetStaffsTeachingToStudent(ctx context.Context,request *um.GetStaffsTeachingToStudentRequest) (*um.GetStaffsTeachingToStudentResponse, error) {
@@ -80,7 +78,54 @@ func (u *universityManagementServer)  GetStaffsTeachingToStudent(ctx context.Con
 	var staffs []*um.Staff
 	_,err = connection.GetSession().Select("id", "name").From("staffs").Where("id in ?", staffIds).Load(&staffs)
 
-	return &um.GetStaffsTeachingToStudentResponse{Staffs: staffs},nil
+	return &um.GetStaffsTeachingToStudentResponse{Staffs: staffs},err
+}
+
+func (u *universityManagementServer) InsertLoginTime(ctx context.Context, request *um.InsertLoginTimeRequest) (*um.InsertLoginTimeResponse, error) {
+	connection, err := u.connectionManager.GetConnection()
+	if err != nil {
+		log.Fatalf("Error: %+v", err)
+	}
+
+	now := time.Now()
+	rq := request.GetRollno()
+	var rn int32
+
+	_,err = connection.GetSession().Select("rollno").From("student_attendance").Where("rollno = ?", rq).Load(&rn)
+	if rn == rq {
+		_,err = connection.GetSession().Update("student_attendance").Set("login_time",  now.Format("15:04:05")).Where("rollno = ?", rq).Exec()
+	}else {
+		_,err = connection.GetSession().InsertInto("student_attendance").Columns("rollno", "date", "login_time").Values(rq,now.Format("Jan 2, 2006"), now.Format("15:04:05")).Exec()
+	}
+
+	if err != nil {
+		return &um.InsertLoginTimeResponse{Msg: "Unsuccessful in inserting login time"},err
+	}
+	return &um.InsertLoginTimeResponse{Msg: "Successfully login time loaded" }, err
+}
+
+func (u *universityManagementServer) InsertLogoutTime(ctx context.Context, request *um.InsertLogoutTimeRequest) (*um.InsertLogoutTimeResponse, error){
+	connection, err := u.connectionManager.GetConnection()
+	if err != nil {
+		log.Fatalf("Error: %+v", err)
+	}
+
+	now := time.Now()
+	rq := request.GetRollno()
+	var rn int32
+
+	_,err = connection.GetSession().Select("rollno").From("student_attendance").Where("rollno = ?", rq).Load(&rn)
+
+	if rn == rq {
+		_,err = connection.GetSession().Update("student_attendance").Set("logout_time",  now.Format("15:04:05")).Where("rollno = ?", rq).Exec()
+	}else {
+		return &um.InsertLogoutTimeResponse{Msg: "Insert Login time first"},nil
+	}
+
+	if err != nil {
+		return &um.InsertLogoutTimeResponse{Msg: "Unsuccessful in inserting logout time"},err
+	}
+	return &um.InsertLogoutTimeResponse{Msg: "Successfully logout time loaded" }, err
 }
 
 func NewUniversityManagementHandler(connectionmanager connection.DatabaseConnectionManager) um.UniversityManagementServiceServer {

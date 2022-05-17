@@ -477,6 +477,194 @@ func (x *GetStaffsTeachingToStudentResponse) GetStaffs() []*Staff {
 	return nil
 }
 
+type InsertLoginTimeRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Rollno int32 `protobuf:"varint,1,opt,name=rollno,proto3" json:"rollno,omitempty"`
+}
+
+func (x *InsertLoginTimeRequest) Reset() {
+	*x = InsertLoginTimeRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_university_management_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *InsertLoginTimeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*InsertLoginTimeRequest) ProtoMessage() {}
+
+func (x *InsertLoginTimeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_university_management_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use InsertLoginTimeRequest.ProtoReflect.Descriptor instead.
+func (*InsertLoginTimeRequest) Descriptor() ([]byte, []int) {
+	return file_university_management_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *InsertLoginTimeRequest) GetRollno() int32 {
+	if x != nil {
+		return x.Rollno
+	}
+	return 0
+}
+
+type InsertLoginTimeResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Msg string `protobuf:"bytes,1,opt,name=msg,proto3" json:"msg,omitempty"`
+}
+
+func (x *InsertLoginTimeResponse) Reset() {
+	*x = InsertLoginTimeResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_university_management_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *InsertLoginTimeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*InsertLoginTimeResponse) ProtoMessage() {}
+
+func (x *InsertLoginTimeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_university_management_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use InsertLoginTimeResponse.ProtoReflect.Descriptor instead.
+func (*InsertLoginTimeResponse) Descriptor() ([]byte, []int) {
+	return file_university_management_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *InsertLoginTimeResponse) GetMsg() string {
+	if x != nil {
+		return x.Msg
+	}
+	return ""
+}
+
+type InsertLogoutTimeRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Rollno int32 `protobuf:"varint,1,opt,name=rollno,proto3" json:"rollno,omitempty"`
+}
+
+func (x *InsertLogoutTimeRequest) Reset() {
+	*x = InsertLogoutTimeRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_university_management_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *InsertLogoutTimeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*InsertLogoutTimeRequest) ProtoMessage() {}
+
+func (x *InsertLogoutTimeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_university_management_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use InsertLogoutTimeRequest.ProtoReflect.Descriptor instead.
+func (*InsertLogoutTimeRequest) Descriptor() ([]byte, []int) {
+	return file_university_management_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *InsertLogoutTimeRequest) GetRollno() int32 {
+	if x != nil {
+		return x.Rollno
+	}
+	return 0
+}
+
+type InsertLogoutTimeResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Msg string `protobuf:"bytes,1,opt,name=msg,proto3" json:"msg,omitempty"`
+}
+
+func (x *InsertLogoutTimeResponse) Reset() {
+	*x = InsertLogoutTimeResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_university_management_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *InsertLogoutTimeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*InsertLogoutTimeResponse) ProtoMessage() {}
+
+func (x *InsertLogoutTimeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_university_management_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use InsertLogoutTimeResponse.ProtoReflect.Descriptor instead.
+func (*InsertLogoutTimeResponse) Descriptor() ([]byte, []int) {
+	return file_university_management_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *InsertLogoutTimeResponse) GetMsg() string {
+	if x != nil {
+		return x.Msg
+	}
+	return ""
+}
+
 var File_university_management_proto protoreflect.FileDescriptor
 
 var file_university_management_proto_rawDesc = []byte{
@@ -521,7 +709,19 @@ var file_university_management_proto_rawDesc = []byte{
 	0x6e, 0x73, 0x65, 0x12, 0x34, 0x0a, 0x06, 0x73, 0x74, 0x61, 0x66, 0x66, 0x73, 0x18, 0x01, 0x20,
 	0x03, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x75, 0x6e, 0x69, 0x76, 0x65, 0x72, 0x73, 0x69, 0x74, 0x79,
 	0x5f, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x74, 0x61, 0x66,
-	0x66, 0x52, 0x06, 0x73, 0x74, 0x61, 0x66, 0x66, 0x73, 0x32, 0xb1, 0x03, 0x0a, 0x1b, 0x55, 0x6e,
+	0x66, 0x52, 0x06, 0x73, 0x74, 0x61, 0x66, 0x66, 0x73, 0x22, 0x30, 0x0a, 0x16, 0x49, 0x6e, 0x73,
+	0x65, 0x72, 0x74, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x54, 0x69, 0x6d, 0x65, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x6f, 0x6c, 0x6c, 0x6e, 0x6f, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x06, 0x72, 0x6f, 0x6c, 0x6c, 0x6e, 0x6f, 0x22, 0x2b, 0x0a, 0x17, 0x49,
+	0x6e, 0x73, 0x65, 0x72, 0x74, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x54, 0x69, 0x6d, 0x65, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6d, 0x73, 0x67, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x03, 0x6d, 0x73, 0x67, 0x22, 0x31, 0x0a, 0x17, 0x49, 0x6e, 0x73, 0x65,
+	0x72, 0x74, 0x4c, 0x6f, 0x67, 0x6f, 0x75, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x6f, 0x6c, 0x6c, 0x6e, 0x6f, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x06, 0x72, 0x6f, 0x6c, 0x6c, 0x6e, 0x6f, 0x22, 0x2c, 0x0a, 0x18, 0x49,
+	0x6e, 0x73, 0x65, 0x72, 0x74, 0x4c, 0x6f, 0x67, 0x6f, 0x75, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6d, 0x73, 0x67, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6d, 0x73, 0x67, 0x32, 0x9c, 0x05, 0x0a, 0x1b, 0x55, 0x6e,
 	0x69, 0x76, 0x65, 0x72, 0x73, 0x69, 0x74, 0x79, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65,
 	0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x6c, 0x0a, 0x0d, 0x47, 0x65, 0x74,
 	0x44, 0x65, 0x70, 0x61, 0x72, 0x74, 0x6d, 0x65, 0x6e, 0x74, 0x12, 0x2b, 0x2e, 0x75, 0x6e, 0x69,
@@ -548,9 +748,24 @@ var file_university_management_proto_rawDesc = []byte{
 	0x1a, 0x39, 0x2e, 0x75, 0x6e, 0x69, 0x76, 0x65, 0x72, 0x73, 0x69, 0x74, 0x79, 0x5f, 0x6d, 0x61,
 	0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x74, 0x61, 0x66,
 	0x66, 0x73, 0x54, 0x65, 0x61, 0x63, 0x68, 0x69, 0x6e, 0x67, 0x54, 0x6f, 0x53, 0x74, 0x75, 0x64,
-	0x65, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x42, 0x18, 0x5a,
-	0x16, 0x2f, 0x75, 0x6e, 0x69, 0x76, 0x65, 0x72, 0x73, 0x69, 0x74, 0x79, 0x5f, 0x6d, 0x61, 0x6e,
-	0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x65, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x72, 0x0a,
+	0x0f, 0x49, 0x6e, 0x73, 0x65, 0x72, 0x74, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x54, 0x69, 0x6d, 0x65,
+	0x12, 0x2d, 0x2e, 0x75, 0x6e, 0x69, 0x76, 0x65, 0x72, 0x73, 0x69, 0x74, 0x79, 0x5f, 0x6d, 0x61,
+	0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x49, 0x6e, 0x73, 0x65, 0x72, 0x74, 0x4c,
+	0x6f, 0x67, 0x69, 0x6e, 0x54, 0x69, 0x6d, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
+	0x2e, 0x2e, 0x75, 0x6e, 0x69, 0x76, 0x65, 0x72, 0x73, 0x69, 0x74, 0x79, 0x5f, 0x6d, 0x61, 0x6e,
+	0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x49, 0x6e, 0x73, 0x65, 0x72, 0x74, 0x4c, 0x6f,
+	0x67, 0x69, 0x6e, 0x54, 0x69, 0x6d, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x00, 0x12, 0x75, 0x0a, 0x10, 0x49, 0x6e, 0x73, 0x65, 0x72, 0x74, 0x4c, 0x6f, 0x67, 0x6f, 0x75,
+	0x74, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x2e, 0x2e, 0x75, 0x6e, 0x69, 0x76, 0x65, 0x72, 0x73, 0x69,
+	0x74, 0x79, 0x5f, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x49, 0x6e,
+	0x73, 0x65, 0x72, 0x74, 0x4c, 0x6f, 0x67, 0x6f, 0x75, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2f, 0x2e, 0x75, 0x6e, 0x69, 0x76, 0x65, 0x72, 0x73, 0x69,
+	0x74, 0x79, 0x5f, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x49, 0x6e,
+	0x73, 0x65, 0x72, 0x74, 0x4c, 0x6f, 0x67, 0x6f, 0x75, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x42, 0x18, 0x5a, 0x16, 0x2f, 0x75, 0x6e, 0x69,
+	0x76, 0x65, 0x72, 0x73, 0x69, 0x74, 0x79, 0x5f, 0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65,
+	0x6e, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -565,7 +780,7 @@ func file_university_management_proto_rawDescGZIP() []byte {
 	return file_university_management_proto_rawDescData
 }
 
-var file_university_management_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_university_management_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_university_management_proto_goTypes = []interface{}{
 	(*Department)(nil),                         // 0: university_management.Department
 	(*Student)(nil),                            // 1: university_management.Student
@@ -576,22 +791,30 @@ var file_university_management_proto_goTypes = []interface{}{
 	(*GetStudentsForDepartmentResponse)(nil),   // 6: university_management.GetStudentsForDepartmentResponse
 	(*GetStaffsTeachingToStudentRequest)(nil),  // 7: university_management.GetStaffsTeachingToStudentRequest
 	(*GetStaffsTeachingToStudentResponse)(nil), // 8: university_management.GetStaffsTeachingToStudentResponse
+	(*InsertLoginTimeRequest)(nil),             // 9: university_management.InsertLoginTimeRequest
+	(*InsertLoginTimeResponse)(nil),            // 10: university_management.InsertLoginTimeResponse
+	(*InsertLogoutTimeRequest)(nil),            // 11: university_management.InsertLogoutTimeRequest
+	(*InsertLogoutTimeResponse)(nil),           // 12: university_management.InsertLogoutTimeResponse
 }
 var file_university_management_proto_depIdxs = []int32{
-	0, // 0: university_management.GetDepartmentResponse.department:type_name -> university_management.Department
-	1, // 1: university_management.GetStudentsForDepartmentResponse.Students:type_name -> university_management.Student
-	2, // 2: university_management.GetStaffsTeachingToStudentResponse.staffs:type_name -> university_management.Staff
-	3, // 3: university_management.UniversityManagementService.GetDepartment:input_type -> university_management.GetDepartmentRequest
-	5, // 4: university_management.UniversityManagementService.GetStudentsForDepartment:input_type -> university_management.GetStudentsForDepartmentRequest
-	7, // 5: university_management.UniversityManagementService.GetStaffsTeachingToStudent:input_type -> university_management.GetStaffsTeachingToStudentRequest
-	4, // 6: university_management.UniversityManagementService.GetDepartment:output_type -> university_management.GetDepartmentResponse
-	6, // 7: university_management.UniversityManagementService.GetStudentsForDepartment:output_type -> university_management.GetStudentsForDepartmentResponse
-	8, // 8: university_management.UniversityManagementService.GetStaffsTeachingToStudent:output_type -> university_management.GetStaffsTeachingToStudentResponse
-	6, // [6:9] is the sub-list for method output_type
-	3, // [3:6] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	0,  // 0: university_management.GetDepartmentResponse.department:type_name -> university_management.Department
+	1,  // 1: university_management.GetStudentsForDepartmentResponse.Students:type_name -> university_management.Student
+	2,  // 2: university_management.GetStaffsTeachingToStudentResponse.staffs:type_name -> university_management.Staff
+	3,  // 3: university_management.UniversityManagementService.GetDepartment:input_type -> university_management.GetDepartmentRequest
+	5,  // 4: university_management.UniversityManagementService.GetStudentsForDepartment:input_type -> university_management.GetStudentsForDepartmentRequest
+	7,  // 5: university_management.UniversityManagementService.GetStaffsTeachingToStudent:input_type -> university_management.GetStaffsTeachingToStudentRequest
+	9,  // 6: university_management.UniversityManagementService.InsertLoginTime:input_type -> university_management.InsertLoginTimeRequest
+	11, // 7: university_management.UniversityManagementService.InsertLogoutTime:input_type -> university_management.InsertLogoutTimeRequest
+	4,  // 8: university_management.UniversityManagementService.GetDepartment:output_type -> university_management.GetDepartmentResponse
+	6,  // 9: university_management.UniversityManagementService.GetStudentsForDepartment:output_type -> university_management.GetStudentsForDepartmentResponse
+	8,  // 10: university_management.UniversityManagementService.GetStaffsTeachingToStudent:output_type -> university_management.GetStaffsTeachingToStudentResponse
+	10, // 11: university_management.UniversityManagementService.InsertLoginTime:output_type -> university_management.InsertLoginTimeResponse
+	12, // 12: university_management.UniversityManagementService.InsertLogoutTime:output_type -> university_management.InsertLogoutTimeResponse
+	8,  // [8:13] is the sub-list for method output_type
+	3,  // [3:8] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_university_management_proto_init() }
@@ -708,6 +931,54 @@ func file_university_management_proto_init() {
 				return nil
 			}
 		}
+		file_university_management_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*InsertLoginTimeRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_university_management_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*InsertLoginTimeResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_university_management_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*InsertLogoutTimeRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_university_management_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*InsertLogoutTimeResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -715,7 +986,7 @@ func file_university_management_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_university_management_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

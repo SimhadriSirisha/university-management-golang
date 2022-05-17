@@ -45,10 +45,30 @@ message GetStaffsTeachingToStudentResponse {
   repeated Staff staffs = 1;
 }
 
+message InsertLoginTimeRequest {
+  int32 rollno = 1;
+}
+
+message InsertLoginTimeResponse {
+  string msg = 1;
+}
+
+message InsertLogoutTimeRequest {
+  int32 rollno = 1;
+}
+
+message InsertLogoutTimeResponse {
+  string msg = 1;
+}
+
 service UniversityManagementService {
   rpc GetDepartment (GetDepartmentRequest) returns (GetDepartmentResponse) {}
 
   rpc GetStudentsForDepartment (GetStudentsForDepartmentRequest) returns (GetStudentsForDepartmentResponse) {}
 
   rpc GetStaffsTeachingToStudent (GetStaffsTeachingToStudentRequest) returns (GetStaffsTeachingToStudentResponse) {}
+
+  rpc InsertLoginTime (InsertLoginTimeRequest) returns (InsertLoginTimeResponse) {}
+
+  rpc InsertLogoutTime (InsertLogoutTimeRequest) returns (InsertLogoutTimeResponse) {}
 }
