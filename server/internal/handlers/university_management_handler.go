@@ -89,19 +89,16 @@ func (u *universityManagementServer) InsertLoginTime(ctx context.Context, reques
 
 	now := time.Now()
 	rq := request.GetRollno()
-	var rn int32
 
-	_,err = connection.GetSession().Select("rollno").From("student_attendance").Where("rollno = ?", rq).Load(&rn)
-	if rn == rq {
-		_,err = connection.GetSession().Update("student_attendance").Set("login_time",  now.Format("15:04:05")).Where("rollno = ?", rq).Exec()
-	}else {
-		_,err = connection.GetSession().InsertInto("student_attendance").Columns("rollno", "date", "login_time").Values(rq,now.Format("Jan 2, 2006"), now.Format("15:04:05")).Exec()
-	}
+	_,err = connection.GetSession().
+		InsertBySql("Insert into student_attendance(rollno,date,login_time) values(?,?,?) " +
+			"ON CONFLICT (rollno,date) DO NOTHING",
+			rq,now.Format("Jan 2, 2006"), now.Format("15:04:05")).Returning("login_time").Exec()
 
 	if err != nil {
-		return &um.InsertLoginTimeResponse{Msg: "Unsuccessful in inserting login time"},err
+		return &um.InsertLoginTimeResponse{Msg: "Unsuccessful login"},err
 	}
-	return &um.InsertLoginTimeResponse{Msg: "Successfully login time loaded" }, err
+	return &um.InsertLoginTimeResponse{Msg: "Login Successful" }, err
 }
 
 func (u *universityManagementServer) InsertLogoutTime(ctx context.Context, request *um.InsertLogoutTimeRequest) (*um.InsertLogoutTimeResponse, error){
@@ -112,20 +109,13 @@ func (u *universityManagementServer) InsertLogoutTime(ctx context.Context, reque
 
 	now := time.Now()
 	rq := request.GetRollno()
-	var rn int32
 
-	_,err = connection.GetSession().Select("rollno").From("student_attendance").Where("rollno = ?", rq).Load(&rn)
-
-	if rn == rq {
-		_,err = connection.GetSession().Update("student_attendance").Set("logout_time",  now.Format("15:04:05")).Where("rollno = ?", rq).Exec()
-	}else {
-		return &um.InsertLogoutTimeResponse{Msg: "Insert Login time first"},nil
-	}
+	_,err = connection.GetSession().Update("student_attendance").Set("logout_time",  now.Format("15:04:05")).Where("rollno = ? and date = ?", rq, now.Format("Jan 2, 2006")).Exec()
 
 	if err != nil {
-		return &um.InsertLogoutTimeResponse{Msg: "Unsuccessful in inserting logout time"},err
+		return &um.InsertLogoutTimeResponse{Msg: "Logout Unsuccessful"},err
 	}
-	return &um.InsertLogoutTimeResponse{Msg: "Successfully logout time loaded" }, err
+	return &um.InsertLogoutTimeResponse{Msg: "Logout Successful" }, err
 }
 
 func NewUniversityManagementHandler(connectionmanager connection.DatabaseConnectionManager) um.UniversityManagementServiceServer {

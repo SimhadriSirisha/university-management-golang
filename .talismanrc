@@ -1,14 +1,12 @@
 fileignoreconfig:
 - filename: db/migrations/000001_create_department_table.up.sql
-  checksum: ae50c3b8401682f5e40a065d4c0c336aea6cd2ae391660f2b6b7e172cb33d311
+  checksum: 6f2102dd24eee932136a4ad7dd42fa7db047a23d52157e5a8af777598e67690f
 - filename: db/migrations/000002_create_student_table.down.sql
   checksum: c811dca9011255bc9f22e82421dc0b28575e1e5637b2f147580da65023bf3f9e
 - filename: db/migrations/000002_create_student_table.up.sql
   checksum: d0ea4ad54e328e499e535c00ba7f121b8dcd94241140172cb4c18ca8a5fe883d
 - filename: go.sum
   checksum: b302d410ae22ee1c266ea49c370eaec229c9cb7ab80a9d5796555c7f2a7d78a2
-- filename: db/migrations/000001_create_department_table.up.sql
-  checksum: 6f2102dd24eee932136a4ad7dd42fa7db047a23d52157e5a8af777598e67690f
 - filename: db/migrations/000003_create_staff_table.down.sql
   checksum: 965d57c8568845e0dfd430e6b248ee2e234f17dd5a24db32dbcb2e10cc2c7712
 - filename: db/migrations/000003_create_staff_table.up.sql
@@ -20,4 +18,4 @@ fileignoreconfig:
 - filename: db/migrations/000005_create_student_attendence_table.down.sql
   checksum: b54480adfc08fafd67c49011a2646113bacddd7132c894afcf3f33b1c1c513d5
 - filename: db/migrations/000005_create_student_attendence_table.up.sql
-  checksum: 8345afcf547cb6554ca11a2b10216b1949dfc0abaa6b961d8dba4be0963015ea
+  checksum: 8d29b9df97b39912a165c643469120015c2224ee2a3653ff4cbf3365be1e12aa

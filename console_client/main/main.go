@@ -48,9 +48,21 @@ func main() {
 	}
 	log.Println(loginRes)
 
+	loginRes,err = client.InsertLoginTime(context.Background(), studentLoginAttendanceRequest)
+	if err != nil {
+		log.Fatalf("Error occured while inserting login time of student having rollno %d, err: %v", studentId, err)
+	}
+	log.Println(loginRes)
+
 
 	studentLogoutAttendanceRequest := &university_management.InsertLogoutTimeRequest{Rollno: 1}
 	logoutRes,err := client.InsertLogoutTime(context.Background(), studentLogoutAttendanceRequest)
+	if err != nil {
+		log.Fatalf("Error occured while inserting logout time of student having rollno %d, err: %v", studentId, err)
+	}
+	log.Println(logoutRes)
+
+	logoutRes,err = client.InsertLogoutTime(context.Background(), studentLogoutAttendanceRequest)
 	if err != nil {
 		log.Fatalf("Error occured while inserting logout time of student having rollno %d, err: %v", studentId, err)
 	}

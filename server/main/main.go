@@ -117,6 +117,4 @@ func insertSeedData(connectionManager connection.DatabaseConnectionManager) {
 	if err != nil {
 		log.Fatalf("Could not insert into table. Err: %+v", err)
 	}
-
-	//defer connectionManager.CloseConnection()
 }
